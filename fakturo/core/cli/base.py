@@ -23,16 +23,19 @@ class Command(CliffCommand):
     __metaclass__ = abc.ABCMeta
 
     def run(self, parsed_args):
+        if self.has_client:
+            self.client = self.get_client()
+        return super(Command, self).run(parsed_args)
+
+    def get_client(self, **kw):
         client_args = {
             'url': self.app.options.api_url,
             'username': self.app.options.username,
             'password': self.app.options.password
         }
-
+        client_args.update(**kw)
         Client = object
-        self.client = Client(**client_args)
-
-        return super(Command, self).run(parsed_args)
+        return Client(**kw)
 
     @abc.abstractmethod
     def execute(self, parsed_args):
