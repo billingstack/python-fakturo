@@ -2,7 +2,8 @@ from fakturo.core.cli.base import ListCommand
 
 
 class ListProviders(ListCommand):
-    has_client = False
-
+    """
+    List all available Providers
+    """
     def execute(self, parsed_args):
         return {}

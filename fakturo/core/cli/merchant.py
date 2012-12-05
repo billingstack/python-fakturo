@@ -1,35 +1,25 @@
-from fakturo.cli.base import CreateCommand
-from fakturo.cli.base import UpdateCommand
-from fakturo.cli.base import DeleteCommand
-from fakturo.cli.base import ListCommand
-from fakturo.cli.base import GetCommand
+from fakturo.core.cli.base import CreateCommand
+from fakturo.core.cli.base import UpdateCommand
+from fakturo.core.cli.base import DeleteCommand
+from fakturo.core.cli.base import ListCommand
+from fakturo.core.cli.base import GetCommand
 
 
-class CreateMerchant(CreateCommand):
-    def get_parser(self, prog_name):
-        parser = super(CreateMerchant, self).get_parser(prog_name)
-        return parser
+class MerchantCreate(CreateCommand):
+    api = 'merchant'
 
 
-class UpdateMerchant(UpdateCommand):
-    def get_parser(self, prog_name):
-        parser = super(UpdateMerchant, self).get_parser(prog_name)
-        return parser
+class MerchantUpdate(UpdateCommand):
+    api = 'merchant'
 
 
-class DeleteMerchant(DeleteCommand):
-    def get_parser(self, prog_name):
-        parser = super(DeleteMerchant, self).get_parser(prog_name)
-        return parser
+class MerchantDelete(DeleteCommand):
+    api = 'merchant'
 
 
-class ListMerchants(ListCommand):
-    def get_parser(self, prog_name):
-        parser = super(ListMerchants, self).get_parser(prog_name)
-        return parser
+class MerchantList(ListCommand):
+    api = 'merchant'
 
 
-class GetMerchant(GetCommand):
-    def get_parser(self, prog_name):
-        parser = super(GetMerchant, self).get_parser(prog_name)
-        return parser
+class MerchantGet(GetCommand):
+    api = 'merchant'

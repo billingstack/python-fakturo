@@ -50,6 +50,12 @@ setup(
     entry_points=textwrap.dedent("""
         [fakturo.core.cli]
         provider-list = fakturo.core.cli.provider:ListProviders
+
+        merchant-create = fakturo.core.cli.merchant:MerchantCreate
+        merchant-list = fakturo.core.cli.merchant:MerchantList
+        merchant-get = fakturo.core.cli.merchant:MerchantGet
+        merchant-update = fakturo.core.cli.merchant:MerchantUpdate
+        merchant-delete = fakturo.core.cli.merchant:MerchantDelete
     """),
     classifiers=[
         'Development Status :: 3 - Alpha',

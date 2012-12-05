@@ -1,0 +1,2 @@
+class ProviderCommandApi(object):
+    pass

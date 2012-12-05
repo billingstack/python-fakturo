@@ -19,6 +19,7 @@ from cliff.app import App
 from cliff.commandmanager import CommandManager, EntryPointWrapper
 
 from fakturo.core import DESCRIPTION
+from fakturo.core.provider.manager import ProviderManager
 from fakturo.core.version import version_info
 
 
@@ -92,8 +93,10 @@ class FakturoShell(App):
         super(FakturoShell, self).__init__(
             description=DESCRIPTION,
             version=version_info,
-            command_manager=FakturoManager('fakturo.core.cli')
+            command_manager=CommandManager('fakturo.core.cli')
         )
+
+        self.provider_manager = ProviderManager(self)
 
     def build_option_parser(self, description, version, argparse_kwargs=None):
         parser = super(FakturoShell, self).build_option_parser(
@@ -101,6 +104,7 @@ class FakturoShell(App):
 
         parser.add_argument('--api-url',
                             default=os.environ.get('FAKTURO_API_URL'),
+                            type=str,
                             help="The API endpoint to interact with")
 
         provider = os.environ.get('FACTURO_PROVIDER', 'billingstack')
