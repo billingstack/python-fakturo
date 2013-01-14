@@ -14,10 +14,14 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 import os
-import pkg_resources
+import logging
 import json
+import pkg_resources
 import sys
 from fakturo.core import exceptions
+
+
+LOG = logging.getLogger(__name__)
 
 
 def resource_string(*args):
@@ -94,3 +98,14 @@ def get_columns(data):
 
     map(lambda item: map(_seen, item.keys()), data)
     return list(columns)
+
+
+def log_request(request):
+    parts = ['curl -i -X %s %s' % (request.method, request.url)]
+
+    for k, v in request.headers.items():
+        parts.append(" -H '%s:%s'" % (k, v))
+
+    if request.data:
+        parts.append(' -d \'%s\'' % request.data)
+    LOG.debug("\nREQ: %s\n" % "".join(parts))
