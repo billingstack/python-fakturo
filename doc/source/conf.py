@@ -40,14 +40,14 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'fakturoclient'
+project = u'python-fakturo'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-from fakturoclient.version import version_info as fakturoclient_version
+from fakturo.core.version import version_info as fakturoclient_version
 version = fakturoclient_version.canonical_version_string()
 # The full version, including alpha/beta/rc tags.
 release = fakturoclient_version.version_string_with_vcs()
@@ -164,7 +164,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'fakturoclientdoc'
+htmlhelp_basename = 'python-fakturo-doc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'fakturoclient.tex', u'Bufunfa Client Documentation',
+  ('index', 'python-fakturo.tex', u'Fakturo Client Documentation',
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -212,7 +212,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'fakturoclient', u'Bufunfa Client Documentation',
+    ('index', 'python-fakturo', u'Fakturo Client Documentation',
 ]
 
 # If true, show URL addresses after external links.
@@ -225,8 +225,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'fakturoclient', u'Bufunfa Client Documentation',
-   u'Bouvet ASA', 'fakturoclient', 'One line description of project.',
+  ('index', 'python-fakturo', u'Fakturo Client Documentation',
+    u'Bouvet ASA', 'python-fakturo', 'One line description of project.',
    'Miscellaneous'),
 ]
 
