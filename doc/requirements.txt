@@ -1,4 +1,8 @@
 cliff
 jsonschema>=0.7
-requests
-python-keystoneclient>=0.2.0
+stevedore
+setuptools-git>=0.4
+nose
+mox
+openstack.nose_plugin
+sphinx
