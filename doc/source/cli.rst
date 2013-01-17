@@ -34,34 +34,34 @@ Merchant
 Create
 ======
 
-.. code:: bash
+.. code-block:: bash
 
-   fakturo merchant-create ...
+   test
 
 List
 ====
 
-.. code:: bash
+.. code-block:: bash
 
    fakturo merchant-list ...
 
 Get
 ===
 
-.. code:: bash
+.. code-block:: bash
 
    fakturo merchant-create ...
 
 Update
 ======
 
-.. code:: bash
+.. code-block:: bash
 
    fakturo merchant-get ...
 
 Delete
 ======
 
-.. code:: bash
+.. code-block:: bash
 
    fakturo merchant-delete ...
