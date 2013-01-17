@@ -1,6 +1,11 @@
 from stevedore.driver import DriverManager
 
 
+"""
+This loads up the Provider which is the implementation of the billing system
+"""
+
+
 NAMESPACE = 'fakturo.provider'
 
 
@@ -13,6 +18,9 @@ class ProviderManager(object):
 
     @property
     def provider(self):
+        """
+        Return the provider that's currently used
+        """
         return self.app.options.provider
 
     def get_provider(self):
@@ -31,6 +39,9 @@ class ProviderManager(object):
 
         :param name: Name of the command
         :param parsed_args: Parsed arguments
+        :param command: The command name to run
+
+        :return: The results of the Provider's command.
         """
         provider = self.get_provider()
         api = provider.get_api(parsed_args, command)
