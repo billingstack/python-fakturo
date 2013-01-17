@@ -56,6 +56,12 @@ setup(
         merchant-get = fakturo.core.cli.merchant:MerchantGet
         merchant-update = fakturo.core.cli.merchant:MerchantUpdate
         merchant-delete = fakturo.core.cli.merchant:MerchantDelete
+
+        customer-create = fakturo.core.cli.merchant:CustomerCreate
+        customer-list = fakturo.core.cli.customer:CustomerList
+        customer-get = fakturo.core.cli.customer:CustomerGet
+        customer-update = fakturo.core.cli.customer:CustomerUpdate
+        customer-delete = fakturo.core.cli.customer:CustomerDelete
     """),
     classifiers=[
         'Development Status :: 3 - Alpha',
