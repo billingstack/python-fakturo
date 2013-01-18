@@ -28,5 +28,4 @@ Command Line Interface
    :maxdepth: 2
    :glob:
 
-   rest/*
-
+   cli/*
