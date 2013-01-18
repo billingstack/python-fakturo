@@ -36,32 +36,70 @@ Create
 
 .. code-block:: bash
 
-   test
+   fakturo merchant-create [positional arg] [opts]
 
 List
 ====
 
 .. code-block:: bash
 
-   fakturo merchant-list ...
+   fakturo merchant-list [positional arg] [opts]
 
 Get
 ===
 
 .. code-block:: bash
 
-   fakturo merchant-create ...
+   fakturo merchant-get [positional arg] [opts]
 
 Update
 ======
 
 .. code-block:: bash
 
-   fakturo merchant-get ...
+   fakturo merchant-update [positional arg] [opts]
 
 Delete
 ======
 
 .. code-block:: bash
 
-   fakturo merchant-delete ...
+   fakturo merchant-delete [positional arg] [opts]
+
+Customer
+++++++++
+
+Create
+======
+
+.. code-block:: bash
+
+   fakturo customer-create [positional arg] [opts]
+
+List
+====
+
+.. code-block:: bash
+
+   fakturo customer-list [positional arg] [opts]
+
+Get
+===
+
+.. code-block:: bash
+
+   fakturo customer-get [positional arg] [opts]
+
+Update
+======
+
+.. code-block:: bash
+
+   fakturo customer-update [positional arg] [opts]
+
+Delete
+======
+
+.. code-block:: bash
+
+   fakturo customer-delete [positional arg] [opts]
