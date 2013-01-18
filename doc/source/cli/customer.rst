@@ -13,20 +13,45 @@
     License for the specific language governing permissions and limitations
     under the License.
 
-.. _cli:
+.. _customer:
 
-========================
-Command Line Interface
-========================
+=================
+Customer Commands
+=================
 
-.. note::
-   The CLI of Fakturo proxies onto a Provider's CMD object which does the heavy
-   lifting. We provide a standard set of commands in addition to the providers
-   own defined commands.
+Create
+======
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
+.. code-block:: bash
 
-   rest/*
+   fakturo customer-create [positional arg] [opts]
+
+List
+====
+
+.. code-block:: bash
+
+   fakturo customer-list [positional arg] [opts]
+
+Get
+===
+
+.. code-block:: bash
+
+   fakturo customer-get [positional arg] [opts]
+
+Update
+======
+
+.. code-block:: bash
+
+   fakturo customer-update [positional arg] [opts]
+
+Delete
+======
+
+.. code-block:: bash
+
+   fakturo customer-delete [positional arg] [opts]
+
 

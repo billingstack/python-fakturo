@@ -13,20 +13,43 @@
     License for the specific language governing permissions and limitations
     under the License.
 
-.. _cli:
+.. _merchant:
 
-========================
-Command Line Interface
-========================
+=================
+Merchant Commands
+=================
 
-.. note::
-   The CLI of Fakturo proxies onto a Provider's CMD object which does the heavy
-   lifting. We provide a standard set of commands in addition to the providers
-   own defined commands.
+Create
+======
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
+.. code-block:: bash
 
-   rest/*
+   fakturo merchant-create [positional arg] [opts]
 
+List
+====
+
+.. code-block:: bash
+
+   fakturo merchant-list [positional arg] [opts]
+
+Get
+===
+
+.. code-block:: bash
+
+   fakturo merchant-get [positional arg] [opts]
+
+Update
+======
+
+.. code-block:: bash
+
+   fakturo merchant-update [positional arg] [opts]
+
+Delete
+======
+
+.. code-block:: bash
+
+   fakturo merchant-delete [positional arg] [opts]
