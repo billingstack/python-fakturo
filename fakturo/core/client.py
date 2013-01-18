@@ -13,6 +13,7 @@ LOG = logging.getLogger(__name__)
 class BaseClient(object):
     def __init__(self, url=None):
         self.url = url
+
         self.requests = self.get_requests()
 
     def _ensure_url(self, args):
@@ -24,11 +25,8 @@ class BaseClient(object):
         if not 'Content-Type' in headers:
             headers['Content-Type'] = 'application/json'
 
-        if not self._ensure_url in args_hooks:
-            args_hooks.append(self._ensure_url)
-
-        if utils.log_request not in pre_request_hooks:
-            pre_request_hooks.insert(0, utils.log_request)
+        args_hooks = args_hooks + [self._ensure_url]
+        pre_request_hooks = pre_request_hooks + [utils.log_request]
 
         session = requests.Session()
         session.hooks = dict(
