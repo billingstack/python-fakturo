@@ -62,6 +62,12 @@ setup(
         customer-get = fakturo.core.cli.customer:CustomerGet
         customer-update = fakturo.core.cli.customer:CustomerUpdate
         customer-delete = fakturo.core.cli.customer:CustomerDelete
+
+        product-create = fakturo.core.cli.product:ProductCreate
+        product-list = fakturo.core.cli.product:ProductList
+        product-get = fakturo.core.cli.product:ProductGet
+        product-update = fakturo.core.cli.product:ProductUpdate
+        product-delete = fakturo.core.cli.product:ProductDelete
     """),
     classifiers=[
         'Development Status :: 3 - Alpha',
