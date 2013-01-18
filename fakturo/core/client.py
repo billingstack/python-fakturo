@@ -12,6 +12,7 @@ LOG = logging.getLogger(__name__)
 
 class BaseClient(object):
     def __init__(self, url=None):
+        self.url = url
         self.requests = self.get_requests()
 
     def _ensure_url(self, args):
