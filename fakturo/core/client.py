@@ -29,7 +29,8 @@ class BaseClient(object):
         return session
 
     def wrap_api_call(self, function, path, *args, **kw):
-        url = self.url + '/' + path.lstrip('/')
+        path = path.lstrip('/') if path else ''
+        url = self.url + '/' + path
         LOG.debug('Wrapping request to %s' % url)
 
         wrapper = kw.get('wrapper', None)
