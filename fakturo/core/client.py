@@ -43,8 +43,12 @@ class BaseClient(object):
             return wrapper(function, *args, **kw)
 
         response = function(*args, **kw)
+        # NOTE: Make a function that can extract errors based on content type?
         if response.status_code != 200:
-            error = response.json.get('error', None)
+            error = None
+            if response.json:
+                error = response.json.get('error', None)
+
             if not error:
                 error = 'Remote error occured. Response Body:\n%s' % response.content
             raise exceptions.RemoteError(response.status_code, error)
