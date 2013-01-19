@@ -1,6 +1,4 @@
 import logging
-from urlparse import urlparse
-
 
 import requests
 
@@ -12,6 +10,7 @@ LOG = logging.getLogger(__name__)
 
 class BaseClient(object):
     def __init__(self, url=None):
+        url.rstrip('/')
         self.url = url
 
         self.requests = self.get_requests()
@@ -30,15 +29,16 @@ class BaseClient(object):
         return session
 
     def wrap_api_call(self, function, path, *args, **kw):
-        path = self.url + '/' + path
+        url = self.url + '/' + path.lstrip('/')
+        LOG.debug('Wrapping request to %s' % url)
 
         wrapper = kw.get('wrapper', None)
         # NOTE: If we're passed a wrapper function by the caller, pass the
         # requests function to it along with path and other args...
         if wrapper and hasattr(wrapper, '__call__'):
-            return wrapper(function, path, *args, **kw)
+            return wrapper(function, url, *args, **kw)
 
-        response = function(path, *args, **kw)
+        response = function(url, *args, **kw)
         # NOTE: Make a function that can extract errors based on content type?
         if response.status_code != 200:
             error = None
@@ -50,14 +50,14 @@ class BaseClient(object):
             raise exceptions.RemoteError(response.status_code, error)
         return response
 
-    def get(self, path, *args, **kw):
-        return self.wrap_api_call(self.requests.get, path, *args, **kw)
+    def get(self, *args, **kw):
+        return self.wrap_api_call(self.requests.get, *args, **kw)
 
-    def post(self, path, *args, **kw):
-        return self.wrap_api_call(self.requests.post, path, *args, **kw)
+    def post(self, *args, **kw):
+        return self.wrap_api_call(self.requests.post, *args, **kw)
 
-    def put(self, path, *args, **kw):
-        return self.wrap_api_call(self.requests.put, path, *args, **kw)
+    def put(self, *args, **kw):
+        return self.wrap_api_call(self.requests.put, *args, **kw)
 
-    def delete(self, path, *args, **kw):
-        return self.wrap_api_call(self.requests.delete, path, *args, **kw)
+    def delete(self, *args, **kw):
+        return self.wrap_api_call(self.requests.delete, *args, **kw)
