@@ -16,16 +16,10 @@ class BaseClient(object):
 
         self.requests = self.get_requests()
 
-    def _ensure_url(self, args):
-        parsed = urlparse(args['url'])
-        if not parsed.scheme:
-            args['url'] = self.url + parsed.path
-
     def get_requests(self, headers={}, args_hooks=[], pre_request_hooks=[]):
         if not 'Content-Type' in headers:
             headers['Content-Type'] = 'application/json'
 
-        args_hooks = args_hooks + [self._ensure_url]
         pre_request_hooks = pre_request_hooks + [utils.log_request]
 
         session = requests.Session()
@@ -35,14 +29,16 @@ class BaseClient(object):
         session.headers.update(headers)
         return session
 
-    def wrap_api_call(self, function, *args, **kw):
+    def wrap_api_call(self, function, path, *args, **kw):
+        path = self.url + '/' + path
+
         wrapper = kw.get('wrapper', None)
         # NOTE: If we're passed a wrapper function by the caller, pass the
         # requests function to it along with path and other args...
         if wrapper and hasattr(wrapper, '__call__'):
-            return wrapper(function, *args, **kw)
+            return wrapper(function, path, *args, **kw)
 
-        response = function(*args, **kw)
+        response = function(path, *args, **kw)
         # NOTE: Make a function that can extract errors based on content type?
         if response.status_code != 200:
             error = None
