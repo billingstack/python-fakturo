@@ -33,7 +33,7 @@ setup(
     description='A provider of bindings / CLI commands for billingsystems',
     author='Endre Karlson',
     author_email='endre.karlson@gmail.com',
-    url='https://github.com/billingstack/fakturo',
+    url='https://github.com/ekarlso/fakturo',
     namespace_packages=['fakturo'],
     packages=find_packages(exclude=['bin']),
     include_package_data=True,
@@ -63,12 +63,24 @@ setup(
         customer-update = fakturo.core.cli.customer:CustomerUpdate
         customer-delete = fakturo.core.cli.customer:CustomerDelete
 
+        plan-create = fakturo.core.cli.plan:PlanCreate
+        plan-list = fakturo.core.cli.plan:PlanList
+        plan-get = fakturo.core.cli.plan:PlanGet
+        plan-update = fakturo.core.cli.plan:PlanUpdate
+        plan-delete = fakturo.core.cli.plan:PlanDelete
+
         product-create = fakturo.core.cli.product:ProductCreate
         product-list = fakturo.core.cli.product:ProductList
         product-get = fakturo.core.cli.product:ProductGet
         product-update = fakturo.core.cli.product:ProductUpdate
         product-delete = fakturo.core.cli.product:ProductDelete
-    """),
+
+        subscription-create = fakturo.core.cli.subscription:SubscriptionCreate
+        subscription-list = fakturo.core.cli.subscription:SubscriptionList
+        subscription-get = fakturo.core.cli.subscription:SubscriptionGet
+        subscription-update = fakturo.core.cli.subscription:SubscriptionUpdate
+        subscription-delete = fakturo.core.cli.subscription:SubscriptionDelete
+   """),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Topic :: Finance :: Billing',
