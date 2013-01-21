@@ -27,7 +27,7 @@ class Command(CliffCommand):
         """
         The name of the command
 
-        api-action like merchant-create
+        api-action like account-create
         """
         if self.api is None or self.action is None:
             return None

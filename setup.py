@@ -51,13 +51,13 @@ setup(
         [fakturo.core.cli]
         provider-list = fakturo.core.cli.provider:ListProviders
 
-        merchant-create = fakturo.core.cli.merchant:MerchantCreate
-        merchant-list = fakturo.core.cli.merchant:MerchantList
-        merchant-get = fakturo.core.cli.merchant:MerchantGet
-        merchant-update = fakturo.core.cli.merchant:MerchantUpdate
-        merchant-delete = fakturo.core.cli.merchant:MerchantDelete
+        account-create = fakturo.core.cli.account:AccountCreate
+        account-list = fakturo.core.cli.account:AccountList
+        account-get = fakturo.core.cli.account:AccountGet
+        account-update = fakturo.core.cli.account:AccountUpdate
+        account-delete = fakturo.core.cli.account:AccountDelete
 
-        customer-create = fakturo.core.cli.merchant:CustomerCreate
+        customer-create = fakturo.core.cli.customer:CustomerCreate
         customer-list = fakturo.core.cli.customer:CustomerList
         customer-get = fakturo.core.cli.customer:CustomerGet
         customer-update = fakturo.core.cli.customer:CustomerUpdate
