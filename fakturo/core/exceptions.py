@@ -22,3 +22,11 @@ class Conflict(RemoteError):
 
 class NotFound(RemoteError):
     pass
+
+
+class CommandError(Exception):
+    pass
+
+
+class CommandNotSupported(CommandError):
+    pass

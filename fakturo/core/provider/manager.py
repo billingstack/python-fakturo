@@ -1,5 +1,7 @@
 from stevedore.driver import DriverManager
 
+from fakturo.core.exceptions import CommandNotSupported
+
 
 """
 This loads up the Provider which is the implementation of the billing system
@@ -45,7 +47,12 @@ class ProviderManager(object):
         """
         provider = self.get_provider()
         api = provider.get_api(parsed_args, command)
-        return getattr(api, name)(parsed_args, command)
+
+        try:
+            command_func = getattr(api, name)
+        except AttributeError:
+            raise CommandNotSupported('Command is not supported by provider')
+        return command_func(parsed_args, command)
 
     def extend_parser(self, name, parser):
         """
