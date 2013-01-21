@@ -13,10 +13,10 @@
     License for the specific language governing permissions and limitations
     under the License.
 
-.. _merchant:
+.. _account:
 
 =================
-Merchant Commands
+Account Commands
 =================
 
 Create
@@ -24,32 +24,32 @@ Create
 
 .. code-block:: bash
 
-   fakturo merchant-create [positional arg] [opts]
+   fakturo account-create [positional arg] [opts]
 
 List
 ====
 
 .. code-block:: bash
 
-   fakturo merchant-list [positional arg] [opts]
+   fakturo account-list [positional arg] [opts]
 
 Get
 ===
 
 .. code-block:: bash
 
-   fakturo merchant-get [positional arg] [opts]
+   fakturo account-get [positional arg] [opts]
 
 Update
 ======
 
 .. code-block:: bash
 
-   fakturo merchant-update [positional arg] [opts]
+   fakturo account-update [positional arg] [opts]
 
 Delete
 ======
 
 .. code-block:: bash
 
-   fakturo merchant-delete [positional arg] [opts]
+   fakturo account-delete [positional arg] [opts]
