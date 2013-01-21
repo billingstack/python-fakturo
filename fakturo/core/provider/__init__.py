@@ -26,6 +26,7 @@ class ProviderBase(object):
         """
         Get a Provider Command api
         """
+        raise NotImplementedError
 
     def get_client(self, *args, **kw):
         """
