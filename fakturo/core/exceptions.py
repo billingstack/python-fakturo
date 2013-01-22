@@ -7,8 +7,7 @@ class RemoteError(Exception):
 class ResourceNotFound(RemoteError):
     pass
 
-
-class Unknown(RemoteError):
+class ResourceNotFound(RemoteError):
     pass
 
 
@@ -24,9 +23,17 @@ class NotFound(RemoteError):
     pass
 
 
-class CommandError(Exception):
+class LocalError(Exception):
+    pass
+
+
+class CommandError(LocalError):
     pass
 
 
 class CommandNotSupported(CommandError):
+    pass
+
+
+class BadRequest(LocalError):
     pass
