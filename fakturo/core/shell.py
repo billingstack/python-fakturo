@@ -106,6 +106,18 @@ class FakturoShell(App):
                             default=os.environ.get('FAKTURO_API_URL'),
                             type=str,
                             help="The API endpoint to interact with")
+        parser.add_argument('--username',
+                            default=os.environ.get('FAKTURO_USERNAME'),
+                            type=str,
+                            help='The username to auth with')
+        parser.add_argument('--password',
+                            default=os.environ.get('FAKTURO_PASSWORD'),
+                            type=str,
+                            help='The password to auth with')
+        parser.add_argument('--account',
+                            default=os.environ.get('FAKTURO_ACCOUNT'),
+                            type=str,
+                            help='The account to auth with')
 
         provider = os.environ.get('FACTURO_PROVIDER', 'billingstack')
         parser.add_argument('--provider', default=provider,
