@@ -28,7 +28,7 @@ class BaseClient(object):
         session.headers.update(headers)
         return session
 
-    def wrap_api_call(self, function, path, *args, **kw):
+    def wrap_api_call(self, function, path, status_code=200, *args, **kw):
         path = path.lstrip('/') if path else ''
         url = self.url + '/' + path
         LOG.debug('Wrapping request to %s' % url)
@@ -41,13 +41,14 @@ class BaseClient(object):
 
         response = function(url, *args, **kw)
         # NOTE: Make a function that can extract errors based on content type?
-        if response.status_code != 200:
+        if response.status_code != status_code:
             error = None
             if response.json:
                 error = response.json.get('error', None)
 
             if not error:
-                error = 'Remote error occured. Response Body:\n%s' % response.content
+                error = 'Remote error occured. Response Body:\n%s' % \
+                    response.content
             raise exceptions.RemoteError(response.status_code, error)
         return response
 
