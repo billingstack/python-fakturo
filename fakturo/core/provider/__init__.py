@@ -1,7 +1,12 @@
 import logging
 
+from stevedore.driver import DriverManager
+
 
 LOG = logging.getLogger(__name__)
+
+
+NAMESPACE = 'fakturo.provider'
 
 
 class ProviderBase(object):
@@ -33,3 +38,12 @@ class ProviderBase(object):
         Get a Client object
         """
         return self.client(*args, **kw)
+
+
+def get_provider(name, invoke_args=(), invoke_kwds={}):
+    """
+    Get a provider based on the self.provider_name propery
+    """
+    mgr = DriverManager(NAMESPACE, name, invoke_on_load=True,
+                        invoke_args=invoke_args, invoke_kwds=invoke_kwds)
+    return mgr.driver

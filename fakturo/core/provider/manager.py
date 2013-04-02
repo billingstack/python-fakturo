@@ -1,14 +1,10 @@
-from stevedore.driver import DriverManager
-
 from fakturo.core.exceptions import CommandNotSupported
+from fakturo.core.provider import get_provider
 
 
 """
 This loads up the Provider which is the implementation of the billing system
 """
-
-
-NAMESPACE = 'fakturo.provider'
 
 
 class ProviderManager(object):
@@ -25,16 +21,6 @@ class ProviderManager(object):
         """
         return self.app.options.provider
 
-    def get_provider(self):
-        """
-        Get a provider based on the self.provider_name propery
-        """
-        mgr = DriverManager(
-            NAMESPACE,
-            self.provider,
-            invoke_on_load=True)
-        return mgr.driver
-
     def execute(self, name, parsed_args, command):
         """
         Execute the command by name from a Provider
@@ -45,7 +31,7 @@ class ProviderManager(object):
 
         :return: The results of the Provider's command.
         """
-        provider = self.get_provider()
+        provider = get_provider(self.provider)
         api = provider.get_api(parsed_args, command)
 
         try:
@@ -61,5 +47,5 @@ class ProviderManager(object):
         :param name: Name of the command
         :param parser: The Parser object
         """
-        provider = self.get_provider()
+        provider = get_provider(self.provider)
         provider.extend_parser(name, parser)
