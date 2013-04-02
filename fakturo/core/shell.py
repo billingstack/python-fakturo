@@ -114,8 +114,12 @@ class FakturoShell(App):
                             default=os.environ.get('FAKTURO_PASSWORD'),
                             type=str,
                             help='The password to auth with')
-        parser.add_argument('--account',
-                            default=os.environ.get('FAKTURO_ACCOUNT'),
+        parser.add_argument('--account-id',
+                            default=os.environ.get('FAKTURO_ACCOUNT_ID'),
+                            type=str,
+                            help='The account to auth with')
+        parser.add_argument('--account-name',
+                            default=os.environ.get('FAKTURO_ACCOUNT_NAME'),
                             type=str,
                             help='The account to auth with')
 
