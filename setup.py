@@ -63,6 +63,12 @@ setup(
         customer-update = fakturo.core.cli.customer:CustomerUpdate
         customer-delete = fakturo.core.cli.customer:CustomerDelete
 
+        pm-create = fakturo.core.cli.paymentmethod:PaymentMethodCreate
+        pm-list = fakturo.core.cli.paymentmethod:PaymentMethodList
+        pm-get = fakturo.core.cli.paymentmethod:PaymentMethodGet
+        pm-update = fakturo.core.cli.paymentmethod:PaymentMethodUpdate
+        pm-delete = fakturo.core.cli.paymentmethod:PaymentMethodDelete
+
         plan-create = fakturo.core.cli.plan:PlanCreate
         plan-list = fakturo.core.cli.plan:PlanList
         plan-get = fakturo.core.cli.plan:PlanGet
