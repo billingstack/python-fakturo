@@ -1,6 +1,7 @@
 import logging
 
 from stevedore.driver import DriverManager
+from stevedore.extension import ExtensionManager
 
 
 LOG = logging.getLogger(__name__)
@@ -20,12 +21,13 @@ class ProviderBase(object):
         """
         Extend a Command with options from the Provider API
         """
-        try:
-            func = getattr(self.api, name + '_parser')
-        except AttributeError:
-            LOG.warn('Command %s doesn\'t extend options', name)
-            return
-        func(parser)
+        if name:
+            try:
+                func = getattr(self.api, name + '_parser')
+            except AttributeError:
+                LOG.warn('Command %s doesn\'t extend options', name)
+                return
+            func(parser)
 
     def get_api(self, parsed_args, command):
         """
@@ -39,6 +41,9 @@ class ProviderBase(object):
         """
         return self.client(*args, **kw)
 
+    def get_version(self):
+        return None
+
 
 def get_provider(name, invoke_args=(), invoke_kwds={}):
     """
@@ -47,3 +52,12 @@ def get_provider(name, invoke_args=(), invoke_kwds={}):
     mgr = DriverManager(NAMESPACE, name, invoke_on_load=True,
                         invoke_args=invoke_args, invoke_kwds=invoke_kwds)
     return mgr.driver
+
+
+def list_providers():
+    """
+    Return a list of installed providers.
+    """
+    em = ExtensionManager(NAMESPACE)
+    return em.map(lambda p:
+                  {'name': p.name, 'version': p.plugin().get_version()})

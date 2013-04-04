@@ -35,7 +35,7 @@ class Command(CliffCommand):
 
     @property
     def method_name(self):
-        return self.name.replace('-', '_')
+        return self.name.replace('-', '_') if self.name else None
 
     def get_parser(self, prog_name):
         """
@@ -113,4 +113,4 @@ class DeleteCommand(Command):
 
 
 __all__ = ["Command", "ListCommand", "GetCommand", "CreateCommand",
-          "UpdateCommand", "DeleteCommand"]
+           "UpdateCommand", "DeleteCommand"]
